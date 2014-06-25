@@ -1,5 +1,5 @@
-require "rab/version"
-
 module Rab
-  # Your code goes here...
 end
+
+require "rab/builder"
+require "rab/version"
