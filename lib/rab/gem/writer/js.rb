@@ -8,7 +8,7 @@ module Gem
         write_assets(js_dir, @project.js_assets)
 
         manifest_file = File.join(js_dir, "#{@project.dir_name}.js")
-        write_template("js.js.erb", manifest_file)
+        write_template("js_manifest.js.erb", manifest_file)
       end
     end
   end
