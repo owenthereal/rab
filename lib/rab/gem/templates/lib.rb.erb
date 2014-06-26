@@ -1,0 +1,9 @@
+require "<%= @project.rails_assets_dir_name %>/version"
+
+if defined?(Rails)
+  module <%= @project.rails_assets_namespace %>
+    class Engine < ::Rails::Engine
+      # Rails -> use vendor directory.
+    end
+  end
+end

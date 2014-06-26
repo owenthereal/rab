@@ -1,7 +1,10 @@
 require "json"
+require "active_support"
 
 module Bower
   class Project < Struct.new(:name, :version, :assets)
+    include ActiveSupport::Inflector
+
     class Creator
       attr_reader :src
 
@@ -49,6 +52,26 @@ module Bower
     def initialize(*args)
       super(*args)
       self.assets ||= []
+    end
+
+    def rails_assets_dir_name
+      @dir_name ||= "rails-assets-#{dasherize(name)}"
+    end
+
+    def rails_assets_namespace
+      @namespace ||= "RailsAssets#{classify(underscore(name))}"
+    end
+
+    def js_assets
+      @js_assets ||= assets.select { |a| File.extname(a) == ".js" }
+    end
+
+    def css_assets
+      @css_assets ||= assets.select { |a| [ ".scss", ".less", ".sass", ".css" ].include?(File.extname(a)) }
+    end
+
+    def font_assets
+      @font_assets ||= assets.select { |a| [ ".eot", ".svg", ".ttf", ".woff" ].include?(File.extname(a)) }
     end
 
     def self.create!(src)
