@@ -1,0 +1,11 @@
+{
+  "author": {
+    "name": "author"
+  },
+  "name": "test-project",
+  "version": "0.0.0",
+  "main": ["./foo.js", "./foo.css"],
+  "dependencies": {
+    "bootstrap": ">=1"
+  }
+}
