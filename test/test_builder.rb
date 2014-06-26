@@ -9,13 +9,13 @@ describe Rab::Builder do
       rab.build!
 
       readme = File.read File.join(dir, "README.md")
-      readme.must_include "# rails-assets-test-project"
-      readme.must_include "gem \"rails-assets-test-project\""
+      readme.must_include "# rab-test-project"
+      readme.must_include "gem \"rab-test-project\""
       readme.must_include "//= require \"test-project\""
 
-      gemspec = File.read File.join(dir, "rails-assets-test-project.gemspec")
-      gemspec.must_include "require 'rails-assets-test-project/version'"
-      gemspec.must_include "RailsAssetsTestProject::VERSION"
+      gemspec = File.read File.join(dir, "rab-test-project.gemspec")
+      gemspec.must_include "require 'rab-test-project/version'"
+      gemspec.must_include "RabTestProject::VERSION"
 
       gemfile = File.read File.join(dir, "Gemfile")
       gemfile.must_include "source 'https://rails-assets.org'"
@@ -23,12 +23,12 @@ describe Rab::Builder do
       rakefile = File.read File.join(dir, "Rakefile")
       rakefile.must_include "require \"bundler/gem_tasks\""
 
-      lib_file = File.read File.join(dir, "lib", "rails-assets-test-project.rb")
-      lib_file.must_include "require \"rails-assets-test-project/version\""
-      lib_file.must_include "module RailsAssetsTestProject"
+      lib_file = File.read File.join(dir, "lib", "rab-test-project.rb")
+      lib_file.must_include "require \"rab-test-project/version\""
+      lib_file.must_include "module RabTestProject"
 
-      version_file = File.read File.join(dir, "lib", "rails-assets-test-project", "version.rb")
-      version_file.must_include "module RailsAssetsTestProject"
+      version_file = File.read File.join(dir, "lib", "rab-test-project", "version.rb")
+      version_file.must_include "module RabTestProject"
       version_file.must_include "VERSION = \"0.0.0\""
 
       js_path = File.join(dir, "vendor", "assets", "javascripts", "test-project")

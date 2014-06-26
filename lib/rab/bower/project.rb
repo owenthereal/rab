@@ -59,11 +59,11 @@ module Bower
     end
 
     def rails_assets_dir_name
-      @dir_name ||= "rails-assets-#{dir_name}"
+      @dir_name ||= "rab-#{dir_name}"
     end
 
     def rails_assets_namespace
-      @namespace ||= "RailsAssets#{classify(underscore(name))}"
+      @namespace ||= "Rab#{classify(underscore(name))}"
     end
 
     def js_assets
