@@ -9,6 +9,7 @@ module Gem
     end
 
     def pack!(dst)
+      write_readme(dst)
       write_gemspec(dst)
       write_gemfile(dst)
       write_rakefile(dst)
@@ -20,6 +21,11 @@ module Gem
     end
 
     private
+
+    def write_readme(dst)
+      readme = File.join(dst, "README.md")
+      write_template("README.md.erb", readme)
+    end
 
     def write_gemspec(dst)
       gemspec = File.join(dst, "#{@project.rails_assets_dir_name}.gemspec")

@@ -8,6 +8,11 @@ describe Rab::Builder do
       rab = Rab::Builder.new("test/fixtures/bower_project", dir)
       rab.build!
 
+      readme = File.read File.join(dir, "README.md")
+      readme.must_include "# rails-assets-test-project"
+      readme.must_include "gem \"rails-assets-test-project\""
+      readme.must_include "//= require \"test-project\""
+
       gemspec = File.read File.join(dir, "rails-assets-test-project.gemspec")
       gemspec.must_include "require 'rails-assets-test-project/version'"
       gemspec.must_include "RailsAssetsTestProject::VERSION"
