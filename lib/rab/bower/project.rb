@@ -34,8 +34,13 @@ module Bower
 
       def build_assets(cwd, paths)
         Array(paths).map do |p|
-          full_path(cwd, p)
-        end
+          pp = full_path(cwd, p)
+          if File.directory?(pp)
+            pp = Dir["#{pp}/**/*"].select { |f| !File.directory? f }
+          end
+
+          pp
+        end.flatten
       end
 
       def build_dep_assets(cwd, dep_paths)

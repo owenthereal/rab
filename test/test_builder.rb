@@ -33,8 +33,11 @@ describe Rab::Builder do
 
       js_path = File.join(dir, "vendor", "assets", "javascripts", "test-project")
       js_files = Dir.entries(js_path)
+      js_files.size.must_equal 7 # plus . and ..
       js_files.must_include "bootstrap.js"
       js_files.must_include "foo.js"
+      js_files.must_include "bar.js"
+      js_files.must_include "baz.js"
       js_files.must_include "jquery.js"
 
       js_manifest = File.read File.join(dir, "vendor", "assets", "javascripts", "test-project.js")
@@ -44,6 +47,7 @@ describe Rab::Builder do
 
       css_path = File.join(dir, "vendor", "assets", "stylesheets", "test-project")
       css_files = Dir.entries(css_path)
+      css_files.size.must_equal 4 # plus . and ..
       css_files.must_include "bootstrap.css"
       css_files.must_include "foo.css"
 
@@ -53,6 +57,7 @@ describe Rab::Builder do
 
       font_path = File.join(dir, "vendor", "assets", "fonts", "test-project")
       font_files = Dir.entries(font_path)
+      font_files.size.must_equal 6 # plus . and ..
       font_files.must_include "glyphicons-halflings-regular.eot"
       font_files.must_include "glyphicons-halflings-regular.svg"
       font_files.must_include "glyphicons-halflings-regular.ttf"
@@ -60,6 +65,7 @@ describe Rab::Builder do
 
       image_path = File.join(dir, "vendor", "assets", "images", "test-project")
       image_files = Dir.entries(image_path)
+      image_files.size.must_equal 3 # plus . and ..
       image_files.must_include "foo.png"
     end
   end
