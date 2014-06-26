@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.version       = Rab::VERSION
   spec.authors       = ["Jingwen Owen Ou"]
   spec.email         = ["jingweno@gmail.com"]
-  spec.summary       = %q{Rails Assets Buidler (RAB) builds Rails asset from a bower project.}
+  spec.summary       = %q{Rails Assets Buidler (RAB) builds Rails asset as a gem from a bower project.}
   spec.homepage      = "https://github.com/jingweno/rab"
   spec.license       = "MIT"
 

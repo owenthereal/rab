@@ -1,6 +1,6 @@
 # Rails Asset Builder (RAB)
 
-Rails Asset Builder (RAB) builds Rails asset from a [bower](http://bower.io/) project.
+Rails Asset Builder (RAB) builds Rails asset as a gem from a [bower](http://bower.io/) project.
 
 ## Installation
 
