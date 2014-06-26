@@ -13,7 +13,7 @@ module Gem
       write_gemspec(dst)
       write_gemfile(dst)
       write_rakefile(dst)
-      write_lib_file(dst)
+      write_engine_file(dst)
       write_version_file(dst)
       write_js_assets(dst)
       write_css_assets(dst)
@@ -23,76 +23,39 @@ module Gem
     private
 
     def write_readme(dst)
-      readme = File.join(dst, "README.md")
-      write_template("README.md.erb", readme)
+      Gem::Writter::Readme.new(@project).write(dst)
     end
 
     def write_gemspec(dst)
-      gemspec = File.join(dst, "#{@project.rails_assets_dir_name}.gemspec")
-      write_template("gemspec.gemspec.erb", gemspec)
+      Gem::Writter::Gemspec.new(@project).write(dst)
     end
 
     def write_gemfile(dst)
-      gemfile = File.join(dst, "Gemfile")
-      write_template("Gemfile.erb", gemfile)
+      Gem::Writter::Gemfile.new(@project).write(dst)
     end
 
     def write_rakefile(dst)
-      rakefile = File.join(dst, "Rakefile")
-      write_template("Rakefile.erb", rakefile)
+      Gem::Writter::Rakefile.new(@project).write(dst)
     end
 
-    def write_lib_file(dst)
-      lib_file = File.join(dst, "lib", "#{@project.rails_assets_dir_name}.rb")
-      write_template("lib.rb.erb", lib_file)
+    def write_engine_file(dst)
+      Gem::Writter::Engine.new(@project).write(dst)
     end
 
     def write_version_file(dst)
-      version_file = File.join(dst, "lib", @project.rails_assets_dir_name, "version.rb")
-      write_template("version.rb.erb", version_file)
-    end
-
-    def write_template(name, to_file)
-      FileUtils.mkdir_p File.dirname(to_file)
-      template = ERB.new File.read(template(name)), nil, "-"
-      File.open(to_file, "w") { |f| f.write template.result(binding) }
+      Gem::Writter::Version.new(@project).write(dst)
     end
 
     def write_js_assets(dst)
-      return unless @project.js_assets.any?
-
-      js_dir = File.join(dst, "vendor", "assets", "javascripts")
-      write_assets(js_dir, @project.js_assets)
-
-      manifest_file = File.join(js_dir, "#{@project.dir_name}.js")
-      write_template("js.js.erb", manifest_file)
+      Gem::Writter::JS.new(@project).write(dst)
     end
 
     def write_css_assets(dst)
-      return unless @project.css_assets.any?
-
-      css_dir = File.join(dst, "vendor", "assets", "stylesheets")
-      write_assets(css_dir, @project.css_assets)
-
-      manifest_file = File.join(css_dir, "#{@project.dir_name}.css")
-      write_template("css.css.erb", manifest_file)
+      Gem::Writter::CSS.new(@project).write(dst)
     end
 
     def write_font_assets(dst)
-      return unless @project.font_assets.any?
-
-      font_dir = File.join(dst, "vendor", "assets", "fonts")
-      write_assets(font_dir, @project.font_assets)
-    end
-
-    def write_assets(dir, assets)
-      asset_dir = File.join(dir, @project.dir_name)
-      FileUtils.mkdir_p(asset_dir)
-      assets.each { |a| FileUtils.cp a, File.join(asset_dir, File.basename(a)) }
-    end
-
-    def template(name)
-      File.expand_path File.join(File.dirname(__FILE__), "templates", name)
+      Gem::Writter::Font.new(@project).write(dst)
     end
   end
 end
