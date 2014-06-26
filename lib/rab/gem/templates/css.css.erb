@@ -1,0 +1,5 @@
+/*
+<%- @project.css_assets.each do |a| -%>
+ *= require <%= "#{@project.dir_name}/#{File.basename(a, File.extname(a))}" %>
+<%- end -%>
+ */

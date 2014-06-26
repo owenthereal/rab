@@ -47,6 +47,10 @@ describe Rab::Builder do
       css_files.must_include "bootstrap.css"
       css_files.must_include "foo.css"
 
+      css_manifest = File.read File.join(dir, "vendor", "assets", "stylesheets", "test-project.css")
+      css_manifest.must_include "test-project/foo"
+      css_manifest.must_include "test-project/bootstrap"
+
       font_path = File.join(dir, "vendor", "assets", "fonts", "test-project")
       font_files = Dir.entries(font_path)
       font_files.must_include "glyphicons-halflings-regular.eot"
