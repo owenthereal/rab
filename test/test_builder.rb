@@ -31,18 +31,23 @@ describe Rab::Builder do
       version_file.must_include "module RailsAssetsTestProject"
       version_file.must_include "VERSION = \"0.0.0\""
 
-      js_path = File.join(dir, "vendor", "assets", "javascripts", "rails-assets-test-project")
+      js_path = File.join(dir, "vendor", "assets", "javascripts", "test-project")
       js_files = Dir.entries(js_path)
       js_files.must_include "bootstrap.js"
       js_files.must_include "foo.js"
       js_files.must_include "jquery.js"
 
-      css_path = File.join(dir, "vendor", "assets", "stylesheets", "rails-assets-test-project")
+      js_manifest = File.read File.join(dir, "vendor", "assets", "javascripts", "test-project.js")
+      js_manifest.must_include "test-project/foo"
+      js_manifest.must_include "test-project/bootstrap"
+      js_manifest.must_include "test-project/jquery"
+
+      css_path = File.join(dir, "vendor", "assets", "stylesheets", "test-project")
       css_files = Dir.entries(css_path)
       css_files.must_include "bootstrap.css"
       css_files.must_include "foo.css"
 
-      font_path = File.join(dir, "vendor", "assets", "fonts", "rails-assets-test-project")
+      font_path = File.join(dir, "vendor", "assets", "fonts", "test-project")
       font_files = Dir.entries(font_path)
       font_files.must_include "glyphicons-halflings-regular.eot"
       font_files.must_include "glyphicons-halflings-regular.svg"

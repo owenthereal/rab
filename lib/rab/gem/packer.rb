@@ -54,13 +54,16 @@ module Gem
 
     def write_template(name, to_file)
       FileUtils.mkdir_p File.dirname(to_file)
-      template = ERB.new File.read(template(name))
+      template = ERB.new File.read(template(name)), nil, "-"
       File.open(to_file, "w") { |f| f.write template.result(binding) }
     end
 
     def write_js_assets(dst)
       js_dir = File.join(dst, "vendor", "assets", "javascripts")
       write_assets(js_dir, @project.js_assets)
+
+      manifest_file = File.join(js_dir, "#{@project.dir_name}.js")
+      write_template("js.js.erb", manifest_file)
     end
 
     def write_css_assets(dst)
@@ -74,7 +77,7 @@ module Gem
     end
 
     def write_assets(dir, assets)
-      asset_dir = File.join(dir, @project.rails_assets_dir_name)
+      asset_dir = File.join(dir, @project.dir_name)
       FileUtils.mkdir_p(asset_dir)
       assets.each { |a| FileUtils.cp a, File.join(asset_dir, File.basename(a)) }
     end

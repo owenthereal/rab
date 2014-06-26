@@ -54,8 +54,12 @@ module Bower
       self.assets ||= []
     end
 
+    def dir_name
+      dasherize(name)
+    end
+
     def rails_assets_dir_name
-      @dir_name ||= "rails-assets-#{dasherize(name)}"
+      @dir_name ||= "rails-assets-#{dir_name}"
     end
 
     def rails_assets_namespace
