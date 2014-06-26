@@ -16,6 +16,7 @@ require "rab/gem/writer/version"
 require "rab/gem/writer/js"
 require "rab/gem/writer/css"
 require "rab/gem/writer/font"
+require "rab/gem/writer/image"
 require "rab/gem/packer"
 
 require "rab/builder"

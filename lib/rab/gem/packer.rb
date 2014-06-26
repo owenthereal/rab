@@ -18,6 +18,7 @@ module Gem
       write_js_assets(dst)
       write_css_assets(dst)
       write_font_assets(dst)
+      write_image_assets(dst)
     end
 
     private
@@ -56,6 +57,10 @@ module Gem
 
     def write_font_assets(dst)
       Gem::Writter::Font.new(@project).write(dst)
+    end
+
+    def write_image_assets(dst)
+      Gem::Writter::Image.new(@project).write(dst)
     end
   end
 end

@@ -78,6 +78,10 @@ module Bower
       @font_assets ||= assets.select { |a| [ ".eot", ".svg", ".ttf", ".woff" ].include?(File.extname(a)) }
     end
 
+    def image_assets
+      @image_assets ||= assets.select { |a| [ ".png", ".ico", ".jpg", ".jpeg", ".gif" ].include?(File.extname(a)) }
+    end
+
     def self.create!(src)
       Creator.new(src).create!
     end

@@ -57,6 +57,10 @@ describe Rab::Builder do
       font_files.must_include "glyphicons-halflings-regular.svg"
       font_files.must_include "glyphicons-halflings-regular.ttf"
       font_files.must_include "glyphicons-halflings-regular.woff"
+
+      image_path = File.join(dir, "vendor", "assets", "images", "test-project")
+      image_files = Dir.entries(image_path)
+      image_files.must_include "foo.png"
     end
   end
 end
