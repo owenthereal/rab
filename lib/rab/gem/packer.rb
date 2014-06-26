@@ -59,6 +59,8 @@ module Gem
     end
 
     def write_js_assets(dst)
+      return unless @project.js_assets.any?
+
       js_dir = File.join(dst, "vendor", "assets", "javascripts")
       write_assets(js_dir, @project.js_assets)
 
@@ -67,6 +69,8 @@ module Gem
     end
 
     def write_css_assets(dst)
+      return unless @project.css_assets.any?
+
       css_dir = File.join(dst, "vendor", "assets", "stylesheets")
       write_assets(css_dir, @project.css_assets)
 
@@ -75,6 +79,8 @@ module Gem
     end
 
     def write_font_assets(dst)
+      return unless @project.font_assets.any?
+
       font_dir = File.join(dst, "vendor", "assets", "fonts")
       write_assets(font_dir, @project.font_assets)
     end
