@@ -5,7 +5,7 @@ Rails Asset Builder (RAB) builds Rails asset as a gem from a [bower](http://bowe
 ## Installation
 
 ```
-gem 'rab'
+gem install rab
 ```
 
 ## Usage
