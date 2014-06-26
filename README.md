@@ -1,28 +1,23 @@
-# Rab
+# Rails Asset Builder (RAB)
 
-TODO: Write a gem description
+Rails Asset Builder (RAB) builds Rails asset from a [bower](http://bower.io/) project.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-    gem 'rab'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rab
+```
+gem 'rab'
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+```
+rab build BOWER_PROJECT GEM_FOLDER
+```
+
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/rab/fork )
+1. Fork it (https://github.com/jingweno/rab/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
