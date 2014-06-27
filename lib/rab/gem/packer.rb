@@ -9,6 +9,9 @@ module Gem
     end
 
     def pack!(dst)
+      dst = File.join(dst, @project.rails_assets_dir_name)
+      FileUtils.mkdir_p(dst)
+
       write_readme(dst)
       write_gemspec(dst)
       write_gemfile(dst)

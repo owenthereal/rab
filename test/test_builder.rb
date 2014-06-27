@@ -8,6 +8,8 @@ describe Rab::Builder do
       rab = Rab::Builder.new("test/fixtures/bower_project", dir)
       rab.build!
 
+      dir = File.join(dir, "rab-test-project")
+
       readme = File.read File.join(dir, "README.md")
       readme.must_include "# rab-test-project"
       readme.must_include "gem \"rab-test-project\""
