@@ -7,7 +7,7 @@ module Rab
     end
 
     def build!
-      prj = Bower::Project.create!(src)
+      prj = Bower::Project.import!(src)
       Gem::Packer.new(prj).pack!(dst)
     end
   end
