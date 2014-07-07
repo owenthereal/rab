@@ -72,19 +72,19 @@ module Bower
     end
 
     def js_assets
-      @js_assets ||= assets.select { |a| File.extname(a) == ".js" }
+      @js_assets ||= Filter::JS.new.filter(assets)
     end
 
     def css_assets
-      @css_assets ||= assets.select { |a| [ ".scss", ".less", ".sass", ".css" ].include?(File.extname(a)) }
+      @css_assets ||= Filter::CSS.new.filter(assets)
     end
 
     def font_assets
-      @font_assets ||= assets.select { |a| [ ".eot", ".svg", ".ttf", ".woff" ].include?(File.extname(a)) }
+      @font_assets ||= Filter::Font.new.filter(assets)
     end
 
     def image_assets
-      @image_assets ||= assets.select { |a| [ ".png", ".ico", ".jpg", ".jpeg", ".gif" ].include?(File.extname(a)) }
+      @image_assets ||= Filter::Image.new.filter(assets)
     end
 
     def self.create!(src)

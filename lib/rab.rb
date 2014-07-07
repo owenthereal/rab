@@ -3,6 +3,10 @@ end
 
 require "rab/bower/command_error"
 require "rab/bower/command"
+require "rab/bower/filter/js"
+require "rab/bower/filter/css"
+require "rab/bower/filter/font"
+require "rab/bower/filter/image"
 require "rab/bower/project"
 
 require "rab/gem/writer/template"
